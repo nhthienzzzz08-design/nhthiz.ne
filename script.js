@@ -198,3 +198,26 @@ searchBtn.addEventListener("click", () => {
 input.addEventListener("keypress", (e) => {
   if (e.key === "Enter") searchBtn.click();
 });
+// --- Coding Days Counter ---
+function typeEffect(el, text, speed = 60) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+function updateCodingDays() {
+  const startDate = new Date("2023-09-25");
+  const today = new Date();
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const daysText = `${diffDays} days since learning to code`;
+  const el = document.getElementById("daysText");
+  typeEffect(el, daysText);
+}
+updateCodingDays();
